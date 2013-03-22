@@ -1,4 +1,4 @@
-#[R-Auto-Adjust](http://rickytan.github.com/RAutoAdjust)
+#[R-Auto-Adjust](https://github.com/rickytan/RAutoAdjust)
 ===========
 
 This project contains a sub-class of UITextFile and a sub-class of UITextView, which will automaticlly adjust position when keyboard pop out to make itself visible.
