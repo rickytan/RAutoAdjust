@@ -26,4 +26,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)onHideKeyboard:(id)sender
+{
+    [[self.view subviews] makeObjectsPerformSelector:@selector(resignFirstResponder)];
+}
+
 @end
