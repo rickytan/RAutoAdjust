@@ -1,0 +1,339 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9C0BF49016FCA3F700D891D0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C0BF48F16FCA3F700D891D0 /* UIKit.framework */; };
+		9C0BF49216FCA3F700D891D0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C0BF49116FCA3F700D891D0 /* Foundation.framework */; };
+		9C0BF49416FCA3F700D891D0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C0BF49316FCA3F700D891D0 /* CoreGraphics.framework */; };
+		9C0BF49A16FCA3F700D891D0 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9C0BF49816FCA3F700D891D0 /* InfoPlist.strings */; };
+		9C0BF49C16FCA3F700D891D0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0BF49B16FCA3F700D891D0 /* main.m */; };
+		9C0BF4A016FCA3F700D891D0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0BF49F16FCA3F700D891D0 /* AppDelegate.m */; };
+		9C0BF4A216FCA3F700D891D0 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C0BF4A116FCA3F700D891D0 /* Default.png */; };
+		9C0BF4A416FCA3F700D891D0 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C0BF4A316FCA3F700D891D0 /* Default@2x.png */; };
+		9C0BF4A616FCA3F700D891D0 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9C0BF4A516FCA3F700D891D0 /* Default-568h@2x.png */; };
+		9C0BF4A916FCA3F700D891D0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0BF4A816FCA3F700D891D0 /* ViewController.m */; };
+		9C0BF4AC16FCA3F700D891D0 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9C0BF4AA16FCA3F700D891D0 /* ViewController.xib */; };
+		9C0BF4B716FCA47500D891D0 /* RAutoTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0BF4B616FCA47500D891D0 /* RAutoTextView.m */; };
+		9C0BF4BA16FCA49000D891D0 /* RAutoTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 9C0BF4B916FCA49000D891D0 /* RAutoTextField.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		9C0BF48C16FCA3F700D891D0 /* RAutoAdjust.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RAutoAdjust.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9C0BF48F16FCA3F700D891D0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		9C0BF49116FCA3F700D891D0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		9C0BF49316FCA3F700D891D0 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		9C0BF49716FCA3F700D891D0 /* RAutoAdjust-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RAutoAdjust-Info.plist"; sourceTree = "<group>"; };
+		9C0BF49916FCA3F700D891D0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		9C0BF49B16FCA3F700D891D0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		9C0BF49D16FCA3F700D891D0 /* RAutoAdjust-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RAutoAdjust-Prefix.pch"; sourceTree = "<group>"; };
+		9C0BF49E16FCA3F700D891D0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		9C0BF49F16FCA3F700D891D0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		9C0BF4A116FCA3F700D891D0 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		9C0BF4A316FCA3F700D891D0 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		9C0BF4A516FCA3F700D891D0 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		9C0BF4A716FCA3F700D891D0 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		9C0BF4A816FCA3F700D891D0 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		9C0BF4AB16FCA3F700D891D0 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		9C0BF4B516FCA47500D891D0 /* RAutoTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RAutoTextView.h; sourceTree = "<group>"; };
+		9C0BF4B616FCA47500D891D0 /* RAutoTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RAutoTextView.m; sourceTree = "<group>"; };
+		9C0BF4B816FCA49000D891D0 /* RAutoTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RAutoTextField.h; sourceTree = "<group>"; };
+		9C0BF4B916FCA49000D891D0 /* RAutoTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RAutoTextField.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9C0BF48916FCA3F700D891D0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C0BF49016FCA3F700D891D0 /* UIKit.framework in Frameworks */,
+				9C0BF49216FCA3F700D891D0 /* Foundation.framework in Frameworks */,
+				9C0BF49416FCA3F700D891D0 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9C0BF48316FCA3F700D891D0 = {
+			isa = PBXGroup;
+			children = (
+				9C0BF4B216FCA45700D891D0 /* Classes */,
+				9C0BF49516FCA3F700D891D0 /* RAutoAdjust */,
+				9C0BF48E16FCA3F700D891D0 /* Frameworks */,
+				9C0BF48D16FCA3F700D891D0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9C0BF48D16FCA3F700D891D0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9C0BF48C16FCA3F700D891D0 /* RAutoAdjust.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9C0BF48E16FCA3F700D891D0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9C0BF48F16FCA3F700D891D0 /* UIKit.framework */,
+				9C0BF49116FCA3F700D891D0 /* Foundation.framework */,
+				9C0BF49316FCA3F700D891D0 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9C0BF49516FCA3F700D891D0 /* RAutoAdjust */ = {
+			isa = PBXGroup;
+			children = (
+				9C0BF49E16FCA3F700D891D0 /* AppDelegate.h */,
+				9C0BF49F16FCA3F700D891D0 /* AppDelegate.m */,
+				9C0BF4A716FCA3F700D891D0 /* ViewController.h */,
+				9C0BF4A816FCA3F700D891D0 /* ViewController.m */,
+				9C0BF4AA16FCA3F700D891D0 /* ViewController.xib */,
+				9C0BF49616FCA3F700D891D0 /* Supporting Files */,
+			);
+			path = RAutoAdjust;
+			sourceTree = "<group>";
+		};
+		9C0BF49616FCA3F700D891D0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9C0BF49716FCA3F700D891D0 /* RAutoAdjust-Info.plist */,
+				9C0BF49816FCA3F700D891D0 /* InfoPlist.strings */,
+				9C0BF49B16FCA3F700D891D0 /* main.m */,
+				9C0BF49D16FCA3F700D891D0 /* RAutoAdjust-Prefix.pch */,
+				9C0BF4A116FCA3F700D891D0 /* Default.png */,
+				9C0BF4A316FCA3F700D891D0 /* Default@2x.png */,
+				9C0BF4A516FCA3F700D891D0 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		9C0BF4B216FCA45700D891D0 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				9C0BF4B316FCA45700D891D0 /* RAutoTextField */,
+				9C0BF4B416FCA45700D891D0 /* RAutoTextView */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		9C0BF4B316FCA45700D891D0 /* RAutoTextField */ = {
+			isa = PBXGroup;
+			children = (
+				9C0BF4B816FCA49000D891D0 /* RAutoTextField.h */,
+				9C0BF4B916FCA49000D891D0 /* RAutoTextField.m */,
+			);
+			path = RAutoTextField;
+			sourceTree = "<group>";
+		};
+		9C0BF4B416FCA45700D891D0 /* RAutoTextView */ = {
+			isa = PBXGroup;
+			children = (
+				9C0BF4B516FCA47500D891D0 /* RAutoTextView.h */,
+				9C0BF4B616FCA47500D891D0 /* RAutoTextView.m */,
+			);
+			path = RAutoTextView;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9C0BF48B16FCA3F700D891D0 /* RAutoAdjust */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9C0BF4AF16FCA3F700D891D0 /* Build configuration list for PBXNativeTarget "RAutoAdjust" */;
+			buildPhases = (
+				9C0BF48816FCA3F700D891D0 /* Sources */,
+				9C0BF48916FCA3F700D891D0 /* Frameworks */,
+				9C0BF48A16FCA3F700D891D0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RAutoAdjust;
+			productName = RAutoAdjust;
+			productReference = 9C0BF48C16FCA3F700D891D0 /* RAutoAdjust.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9C0BF48416FCA3F700D891D0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = ricky;
+			};
+			buildConfigurationList = 9C0BF48716FCA3F700D891D0 /* Build configuration list for PBXProject "RAutoAdjust" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 9C0BF48316FCA3F700D891D0;
+			productRefGroup = 9C0BF48D16FCA3F700D891D0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9C0BF48B16FCA3F700D891D0 /* RAutoAdjust */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9C0BF48A16FCA3F700D891D0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C0BF49A16FCA3F700D891D0 /* InfoPlist.strings in Resources */,
+				9C0BF4A216FCA3F700D891D0 /* Default.png in Resources */,
+				9C0BF4A416FCA3F700D891D0 /* Default@2x.png in Resources */,
+				9C0BF4A616FCA3F700D891D0 /* Default-568h@2x.png in Resources */,
+				9C0BF4AC16FCA3F700D891D0 /* ViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9C0BF48816FCA3F700D891D0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9C0BF49C16FCA3F700D891D0 /* main.m in Sources */,
+				9C0BF4A016FCA3F700D891D0 /* AppDelegate.m in Sources */,
+				9C0BF4A916FCA3F700D891D0 /* ViewController.m in Sources */,
+				9C0BF4B716FCA47500D891D0 /* RAutoTextView.m in Sources */,
+				9C0BF4BA16FCA49000D891D0 /* RAutoTextField.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		9C0BF49816FCA3F700D891D0 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9C0BF49916FCA3F700D891D0 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		9C0BF4AA16FCA3F700D891D0 /* ViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9C0BF4AB16FCA3F700D891D0 /* en */,
+			);
+			name = ViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9C0BF4AD16FCA3F700D891D0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		9C0BF4AE16FCA3F700D891D0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9C0BF4B016FCA3F700D891D0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RAutoAdjust/RAutoAdjust-Prefix.pch";
+				INFOPLIST_FILE = "RAutoAdjust/RAutoAdjust-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		9C0BF4B116FCA3F700D891D0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "RAutoAdjust/RAutoAdjust-Prefix.pch";
+				INFOPLIST_FILE = "RAutoAdjust/RAutoAdjust-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9C0BF48716FCA3F700D891D0 /* Build configuration list for PBXProject "RAutoAdjust" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9C0BF4AD16FCA3F700D891D0 /* Debug */,
+				9C0BF4AE16FCA3F700D891D0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9C0BF4AF16FCA3F700D891D0 /* Build configuration list for PBXNativeTarget "RAutoAdjust" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9C0BF4B016FCA3F700D891D0 /* Debug */,
+				9C0BF4B116FCA3F700D891D0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9C0BF48416FCA3F700D891D0 /* Project object */;
+}
