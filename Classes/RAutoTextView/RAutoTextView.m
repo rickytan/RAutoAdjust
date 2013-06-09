@@ -46,12 +46,14 @@
 
 - (BOOL)resignFirstResponder
 {
-    [UIView animateWithDuration:0.25
-                     animations:^{
-                         self.window.transform = CGAffineTransformIdentity;
-                         self.contentInset = UIEdgeInsetsZero;
-                     }];
-    return [super resignFirstResponder];
+    if ([super resignFirstResponder]) {
+        [UIView animateWithDuration:0.25
+                         animations:^{
+                             self.window.transform = CGAffineTransformIdentity;
+                         }];
+        return YES;
+    }
+    return NO;
 }
 
 - (UIView*)inputAccessoryView
