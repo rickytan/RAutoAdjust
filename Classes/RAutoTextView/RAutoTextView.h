@@ -22,7 +22,7 @@
 #   endif
 
 #   ifndef RAAutorelease
-#       define RAAutorelease(a) {}
+#       define RAAutorelease(a) (a)
 #   endif
 #endif
 

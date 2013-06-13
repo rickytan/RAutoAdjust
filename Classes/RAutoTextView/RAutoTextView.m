@@ -71,7 +71,8 @@
                                                                                 target:nil
                                                                                 action:nil];
         toolbar.items = [NSArray arrayWithObjects:spacer, doneItem, nil];
-        RARelease(spacer),RARelease(doneItem);
+        RARelease(spacer);
+        RARelease(doneItem);
         self.inputAccessoryView = toolbar;
         return RAAutorelease(toolbar);
     }

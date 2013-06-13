@@ -294,6 +294,7 @@
 		9C0BF4B016FCA3F700D891D0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RAutoAdjust/RAutoAdjust-Prefix.pch";
 				INFOPLIST_FILE = "RAutoAdjust/RAutoAdjust-Info.plist";
@@ -306,6 +307,7 @@
 		9C0BF4B116FCA3F700D891D0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RAutoAdjust/RAutoAdjust-Prefix.pch";
 				INFOPLIST_FILE = "RAutoAdjust/RAutoAdjust-Info.plist";
