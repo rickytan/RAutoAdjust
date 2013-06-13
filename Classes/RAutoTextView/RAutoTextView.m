@@ -50,6 +50,7 @@
         [UIView animateWithDuration:0.25
                          animations:^{
                              self.window.transform = CGAffineTransformIdentity;
+                             self.contentInset = UIEdgeInsetsZero;
                          }];
         return YES;
     }
@@ -99,26 +100,85 @@
 {
     CGRect frame = [self.window convertRect:self.frame
                                    fromView:self.superview];
-    CGFloat maxY = CGRectGetMaxY(frame);
-    CGFloat minY = CGRectGetMinY(frame) +
-    MIN(self.font.lineHeight * self.visibleLinesWhenKeyboardOverlay,
-        CGRectGetHeight(frame));
+    CGAffineTransform transform = CGAffineTransformIdentity;
+    UIEdgeInsets contentInset = UIEdgeInsetsZero;
     
+    switch ([UIDevice currentDevice].orientation) {
+        case UIDeviceOrientationUnknown:
+        case UIDeviceOrientationPortrait:
+        {
+            CGFloat maxY = CGRectGetMaxY(frame);
+            CGFloat minY = CGRectGetMinY(frame) +
+            MIN(self.font.lineHeight * self.visibleLinesWhenKeyboardOverlay,
+                CGRectGetHeight(frame));
+            
+            if (minY <= keyboardFrame.origin.y && keyboardFrame.origin.y < maxY) {
+                contentInset = UIEdgeInsetsMake(0, 0, maxY - keyboardFrame.origin.y, 0);
+            }
+            else if (minY > keyboardFrame.origin.y) {
+                transform = CGAffineTransformMakeTranslation(0, keyboardFrame.origin.y - minY);
+                contentInset = UIEdgeInsetsMake(0, 0, maxY - minY, 0);
+            }
+            break;
+        }
+        case UIDeviceOrientationPortraitUpsideDown:
+        {
+            CGFloat maxY = CGRectGetMinY(frame);
+            CGFloat minY = CGRectGetMaxY(frame) -
+            MIN(self.font.lineHeight * self.visibleLinesWhenKeyboardOverlay,
+                CGRectGetHeight(frame));
+            
+            if (maxY <= keyboardFrame.size.height && keyboardFrame.size.height < minY) {
+                contentInset = UIEdgeInsetsMake(0, 0, minY - keyboardFrame.size.height, 0);
+            }
+            else if (minY < keyboardFrame.size.height) {
+                transform = CGAffineTransformMakeTranslation(0, keyboardFrame.size.height - minY);
+                contentInset = UIEdgeInsetsMake(0, 0, minY - maxY, 0);
+            }
+            break;
+        }
+        case UIDeviceOrientationLandscapeLeft:
+        {
+            CGFloat maxY = CGRectGetMinX(frame);
+            CGFloat minY = CGRectGetMaxX(frame) -
+            MIN(self.font.lineHeight * self.visibleLinesWhenKeyboardOverlay,
+                CGRectGetWidth(frame));
+            
+            if (maxY <= keyboardFrame.size.width && keyboardFrame.size.width < minY) {
+                contentInset = UIEdgeInsetsMake(0, 0, minY - keyboardFrame.size.width, 0);
+            }
+            else if (minY < keyboardFrame.size.width) {
+                transform = CGAffineTransformMakeTranslation(keyboardFrame.size.width - minY, 0);
+                contentInset = UIEdgeInsetsMake(0, 0, minY - maxY, 0);
+            }
+            break;
+        }
+        case UIDeviceOrientationLandscapeRight:
+        {
+            CGFloat maxY = CGRectGetMaxX(frame);
+            CGFloat minY = CGRectGetMinX(frame) +
+            MIN(self.font.lineHeight * self.visibleLinesWhenKeyboardOverlay,
+                CGRectGetWidth(frame));
+            
+            if (minY <= keyboardFrame.origin.x && keyboardFrame.origin.x < maxY) {
+                contentInset = UIEdgeInsetsMake(0, 0, maxY - keyboardFrame.origin.x, 0);
+            }
+            else if (minY > keyboardFrame.origin.x) {
+                transform = CGAffineTransformMakeTranslation(keyboardFrame.origin.x - minY, 0);
+                contentInset = UIEdgeInsetsMake(0, 0, maxY - minY, 0);
+            }
+        }
+            break;
+        default:
+            break;
+    }
     [UIView beginAnimations:@"Adjust" context:nil];
     [UIView setAnimationBeginsFromCurrentState:YES];
     [UIView setAnimationDuration:duration];
     [UIView setAnimationCurve:0];
-    if (minY <= keyboardFrame.origin.y && keyboardFrame.origin.y < maxY) {
-        self.contentInset = UIEdgeInsetsMake(0, 0, maxY - keyboardFrame.origin.y, 0);
-    }
-    else if (minY > keyboardFrame.origin.y) {
-        self.window.transform = CGAffineTransformMakeTranslation(0, keyboardFrame.origin.y - minY);
-        self.contentInset = UIEdgeInsetsMake(0, 0, maxY - minY, 0);
-    }
-    else {
-        self.window.transform = CGAffineTransformIdentity;
-        self.contentInset = UIEdgeInsetsZero;
-    }
+    
+    self.window.transform = transform;
+    self.contentInset = contentInset;
     
     [UIView commitAnimations];
 }
