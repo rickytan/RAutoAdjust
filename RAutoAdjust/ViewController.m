@@ -26,9 +26,24 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (BOOL)shouldAutorotate
+{
+    return YES;
+}
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskAll;
+}
+
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation
+{
+    return UIInterfaceOrientationPortrait;
+}
+
 - (IBAction)onHideKeyboard:(id)sender
 {
-    [[self.view subviews] makeObjectsPerformSelector:@selector(resignFirstResponder)];
+    [self.view endEditing:YES];
 }
 
 @end

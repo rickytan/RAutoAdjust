@@ -97,17 +97,38 @@
 {
     CGRect frame = [self.window convertRect:self.frame
                                    fromView:self.superview];
-    
+    CGAffineTransform transform = CGAffineTransformIdentity;
+    switch ([UIDevice currentDevice].orientation) {
+        case UIDeviceOrientationUnknown:
+        case UIDeviceOrientationPortrait:
+            if (CGRectGetMaxY(frame) > keyboardFrame.origin.y) {
+                transform = CGAffineTransformMakeTranslation(0, keyboardFrame.origin.y - CGRectGetMaxY(frame));
+            }
+            break;
+        case UIDeviceOrientationPortraitUpsideDown:
+            if (CGRectGetMinY(frame) < keyboardFrame.size.height) {
+                transform = CGAffineTransformMakeTranslation(0, keyboardFrame.size.height - CGRectGetMinY(frame));
+            }
+            break;
+        case UIDeviceOrientationLandscapeLeft:
+            if (CGRectGetMinX(frame) < keyboardFrame.size.width) {
+                transform = CGAffineTransformMakeTranslation(keyboardFrame.size.width - CGRectGetMinX(frame), 0);
+            }
+            break;
+        case UIDeviceOrientationLandscapeRight:
+            if (CGRectGetMaxX(frame) > keyboardFrame.origin.x) {
+                transform = CGAffineTransformMakeTranslation(keyboardFrame.origin.x - CGRectGetMaxX(frame), 0);
+            }
+            break;
+        default:
+            break;
+    }
     [UIView beginAnimations:@"Adjust" context:nil];
     [UIView setAnimationBeginsFromCurrentState:YES];
     [UIView setAnimationDuration:duration];
     [UIView setAnimationCurve:0];
-    if (CGRectGetMaxY(frame) > keyboardFrame.origin.y ) {
-        self.window.transform = CGAffineTransformMakeTranslation(0, keyboardFrame.origin.y - CGRectGetMaxY(frame));
-    }
-    else {
-        self.window.transform = CGAffineTransformIdentity;
-    }
+    
+    self.window.transform = transform;
     
     [UIView commitAnimations];
 }
