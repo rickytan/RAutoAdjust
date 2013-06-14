@@ -99,24 +99,24 @@
     CGRect frame = [self.window convertRect:self.frame
                                    fromView:self.superview];
     CGAffineTransform transform = CGAffineTransformIdentity;
-    switch ([UIDevice currentDevice].orientation) {
-        case UIDeviceOrientationUnknown:
-        case UIDeviceOrientationPortrait:
+    
+    switch ([UIApplication sharedApplication].statusBarOrientation) {
+        case UIInterfaceOrientationPortrait:
             if (CGRectGetMaxY(frame) > keyboardFrame.origin.y) {
                 transform = CGAffineTransformMakeTranslation(0, keyboardFrame.origin.y - CGRectGetMaxY(frame));
             }
             break;
-        case UIDeviceOrientationPortraitUpsideDown:
+        case UIInterfaceOrientationPortraitUpsideDown:
             if (CGRectGetMinY(frame) < keyboardFrame.size.height) {
                 transform = CGAffineTransformMakeTranslation(0, keyboardFrame.size.height - CGRectGetMinY(frame));
             }
             break;
-        case UIDeviceOrientationLandscapeLeft:
+        case UIInterfaceOrientationLandscapeRight:
             if (CGRectGetMinX(frame) < keyboardFrame.size.width) {
                 transform = CGAffineTransformMakeTranslation(keyboardFrame.size.width - CGRectGetMinX(frame), 0);
             }
             break;
-        case UIDeviceOrientationLandscapeRight:
+        case UIInterfaceOrientationLandscapeLeft:
             if (CGRectGetMaxX(frame) > keyboardFrame.origin.x) {
                 transform = CGAffineTransformMakeTranslation(keyboardFrame.origin.x - CGRectGetMaxX(frame), 0);
             }

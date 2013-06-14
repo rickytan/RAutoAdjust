@@ -104,9 +104,8 @@
     CGAffineTransform transform = CGAffineTransformIdentity;
     UIEdgeInsets contentInset = UIEdgeInsetsZero;
     
-    switch ([UIDevice currentDevice].orientation) {
-        case UIDeviceOrientationUnknown:
-        case UIDeviceOrientationPortrait:
+    switch ([UIApplication sharedApplication].statusBarOrientation) {
+        case UIInterfaceOrientationPortrait:
         {
             CGFloat maxY = CGRectGetMaxY(frame);
             CGFloat minY = CGRectGetMinY(frame) +
@@ -122,7 +121,7 @@
             }
             break;
         }
-        case UIDeviceOrientationPortraitUpsideDown:
+        case UIInterfaceOrientationPortraitUpsideDown:
         {
             CGFloat maxY = CGRectGetMinY(frame);
             CGFloat minY = CGRectGetMaxY(frame) -
@@ -138,7 +137,7 @@
             }
             break;
         }
-        case UIDeviceOrientationLandscapeLeft:
+        case UIInterfaceOrientationLandscapeRight:
         {
             CGFloat maxY = CGRectGetMinX(frame);
             CGFloat minY = CGRectGetMaxX(frame) -
@@ -154,7 +153,7 @@
             }
             break;
         }
-        case UIDeviceOrientationLandscapeRight:
+        case UIInterfaceOrientationLandscapeLeft:
         {
             CGFloat maxY = CGRectGetMaxX(frame);
             CGFloat minY = CGRectGetMinX(frame) +
