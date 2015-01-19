@@ -188,10 +188,6 @@
     if (!self.isFirstResponder)
         return;
     
-    [NSObject cancelPreviousPerformRequestsWithTarget:self
-                                             selector:@selector(doAdjust)
-                                               object:nil];
-    
     NSDictionary *userinfo = notification.userInfo;
     
     CGFloat duration = [[userinfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
