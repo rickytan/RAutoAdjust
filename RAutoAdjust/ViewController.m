@@ -7,9 +7,11 @@
 //
 
 #import "ViewController.h"
+#import "RAutoTextView.h"
 
 @interface ViewController ()
 @property (nonatomic, assign) IBOutlet UITextView *textView;
+@property (retain, nonatomic) IBOutlet RAutoTextView *textView2;
 @end
 
 @implementation ViewController
@@ -23,8 +25,11 @@
     [self.textView setValue:str forKey:@"contentToHTMLString"];
     self.textView.textAlignment = NSTextAlignmentLeft;
     //self.textView.attributedText
-    self.textView.editable = NO;
+    //self.textView.editable = NO;
     self.textView.font = [UIFont fontWithName:@"vardana" size:20.0];
+
+
+    self.textView2.visibleLinesWhenKeyboardOverlay = 4.f;
 }
 
 - (void)didReceiveMemoryWarning
@@ -48,9 +53,16 @@
     return UIInterfaceOrientationPortrait;
 }
 
-- (IBAction)onHideKeyboard:(id)sender
-{
+- (IBAction)onDismissKeyboard:(id)sender {
     [self.view endEditing:YES];
 }
 
+- (void)dealloc {
+    [_textView2 release];
+    [super dealloc];
+}
+- (void)viewDidUnload {
+    [self setTextView2:nil];
+    [super viewDidUnload];
+}
 @end
