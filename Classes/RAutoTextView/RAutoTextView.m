@@ -98,6 +98,7 @@
 
 - (void)adjustPositionWithKeyboardFrame:(CGRect)keyboardFrame
                                duration:(CGFloat)duration
+                                  curve:(UIViewAnimationCurve)curve
 {
     CGRect frame = [self.window convertRect:self.frame
                                    fromView:self.superview];
@@ -175,12 +176,22 @@
     [UIView beginAnimations:@"Adjust" context:nil];
     [UIView setAnimationBeginsFromCurrentState:YES];
     [UIView setAnimationDuration:duration];
-    [UIView setAnimationCurve:0];
+    [UIView setAnimationCurve:curve];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(adjustEnded:finished:context:)];
     
     self.window.transform = transform;
     self.contentInset = contentInset;
     
     [UIView commitAnimations];
+
+}
+
+- (void)adjustEnded:(NSString *)animationID
+           finished:(NSNumber *)finished
+            context:(void *)context
+{
+    [self scrollRangeToVisible:self.selectedRange];
 }
 
 - (void)positionMainView:(NSNotification*)notification
@@ -189,10 +200,13 @@
         return;
     
     NSDictionary *userinfo = notification.userInfo;
+
+    NSInteger curve = [userinfo[UIKeyboardAnimationCurveUserInfoKey] integerValue];
     
     CGFloat duration = [[userinfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
     CGRect keyboardFrame = [[userinfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
     [self adjustPositionWithKeyboardFrame:keyboardFrame
-                                 duration:duration];
+                                 duration:duration
+                                    curve:curve];
 }
 @end

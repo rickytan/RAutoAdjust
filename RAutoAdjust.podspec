@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '5.0'
   s.social_media_url = 'http://rickytan.cn'
   s.name         = "RAutoAdjust"
-  s.version      = "1.0.0"
+  s.version      = "1.0.2"
   s.summary      = "a drop-in replacement of UITextField and UITextView which adjust window position to make itself visible when keyboard pop out"
   s.description  = "a drop-in replacement of UITextField and UITextView which can automatically adjust window position to make itself visible when keyboard pop out"
   s.homepage     = "https://github.com/rickytan/RAutoAdjust"
