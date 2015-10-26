@@ -28,4 +28,7 @@
 
 @interface RAutoTextField : UITextField
 
+// Override point
+- (CGFloat)adjustDistance;  // Default 0
+
 @end

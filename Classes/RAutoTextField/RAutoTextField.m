@@ -54,7 +54,7 @@
     return NO;
 }
 
-- (UIView*)inputAccessoryView
+- (UIView *)inputAccessoryView
 {
     if ([super inputAccessoryView])
         return [super inputAccessoryView];
@@ -93,6 +93,11 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+- (CGFloat)adjustDistance
+{
+    return 30.f;
+}
+
 - (void)adjustPositionWithKeyboardFrame:(CGRect)keyboardFrame
                                duration:(CGFloat)duration
                                   curve:(UIViewAnimationCurve)curve
@@ -104,22 +109,22 @@
     switch ([UIApplication sharedApplication].statusBarOrientation) {
         case UIInterfaceOrientationPortrait:
             if (CGRectGetMaxY(frame) > keyboardFrame.origin.y) {
-                transform = CGAffineTransformMakeTranslation(0, keyboardFrame.origin.y - CGRectGetMaxY(frame));
+                transform = CGAffineTransformMakeTranslation(0, keyboardFrame.origin.y - CGRectGetMaxY(frame) - [self adjustDistance]);
             }
             break;
         case UIInterfaceOrientationPortraitUpsideDown:
             if (CGRectGetMinY(frame) < keyboardFrame.size.height) {
-                transform = CGAffineTransformMakeTranslation(0, keyboardFrame.size.height - CGRectGetMinY(frame));
+                transform = CGAffineTransformMakeTranslation(0, keyboardFrame.size.height - CGRectGetMinY(frame) + [self adjustDistance]);
             }
             break;
         case UIInterfaceOrientationLandscapeRight:
             if (CGRectGetMinX(frame) < keyboardFrame.size.width) {
-                transform = CGAffineTransformMakeTranslation(keyboardFrame.size.width - CGRectGetMinX(frame), 0);
+                transform = CGAffineTransformMakeTranslation(keyboardFrame.size.width - CGRectGetMinX(frame) + [self adjustDistance], 0);
             }
             break;
         case UIInterfaceOrientationLandscapeLeft:
             if (CGRectGetMaxX(frame) > keyboardFrame.origin.x) {
-                transform = CGAffineTransformMakeTranslation(keyboardFrame.origin.x - CGRectGetMaxX(frame), 0);
+                transform = CGAffineTransformMakeTranslation(keyboardFrame.origin.x - CGRectGetMaxX(frame) - [self adjustDistance], 0);
             }
             break;
         default:
@@ -135,7 +140,7 @@
     [UIView commitAnimations];
 }
 
-- (void)positionMainView:(NSNotification*)notification
+- (void)positionMainView:(NSNotification *)notification
 {
     if (!self.isFirstResponder)
         return;
