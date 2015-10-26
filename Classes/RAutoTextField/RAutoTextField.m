@@ -95,7 +95,7 @@
 
 - (CGFloat)adjustDistance
 {
-    return 30.f;
+    return 0.f;
 }
 
 - (void)adjustPositionWithKeyboardFrame:(CGRect)keyboardFrame
