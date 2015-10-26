@@ -108,22 +108,22 @@
     
     switch ([UIApplication sharedApplication].statusBarOrientation) {
         case UIInterfaceOrientationPortrait:
-            if (CGRectGetMaxY(frame) > keyboardFrame.origin.y) {
+            if (CGRectGetMaxY(frame) > keyboardFrame.origin.y - [self adjustDistance]) {
                 transform = CGAffineTransformMakeTranslation(0, keyboardFrame.origin.y - CGRectGetMaxY(frame) - [self adjustDistance]);
             }
             break;
         case UIInterfaceOrientationPortraitUpsideDown:
-            if (CGRectGetMinY(frame) < keyboardFrame.size.height) {
+            if (CGRectGetMinY(frame) < keyboardFrame.size.height + [self adjustDistance]) {
                 transform = CGAffineTransformMakeTranslation(0, keyboardFrame.size.height - CGRectGetMinY(frame) + [self adjustDistance]);
             }
             break;
         case UIInterfaceOrientationLandscapeRight:
-            if (CGRectGetMinX(frame) < keyboardFrame.size.width) {
+            if (CGRectGetMinX(frame) < keyboardFrame.size.width + [self adjustDistance]) {
                 transform = CGAffineTransformMakeTranslation(keyboardFrame.size.width - CGRectGetMinX(frame) + [self adjustDistance], 0);
             }
             break;
         case UIInterfaceOrientationLandscapeLeft:
-            if (CGRectGetMaxX(frame) > keyboardFrame.origin.x) {
+            if (CGRectGetMaxX(frame) > keyboardFrame.origin.x - [self adjustDistance]) {
                 transform = CGAffineTransformMakeTranslation(keyboardFrame.origin.x - CGRectGetMaxX(frame) - [self adjustDistance], 0);
             }
             break;
