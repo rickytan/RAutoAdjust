@@ -42,39 +42,28 @@
     return self;
 }
 
-- (BOOL)resignFirstResponder
-{
-    if ([super resignFirstResponder]) {
-        [UIView animateWithDuration:0.25
-                         animations:^{
-                             self.window.transform = CGAffineTransformIdentity;
-                         }];
-        return YES;
-    }
-    return NO;
-}
-
-- (UIView *)inputAccessoryView
-{
-    if ([super inputAccessoryView])
-        return [super inputAccessoryView];
-    else {
-        UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 36)];
-        toolbar.barStyle = UIBarStyleBlackTranslucent;
-        UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
-                                                                                  target:self
-                                                                                  action:@selector(onDone:)];
-        UIBarButtonItem *spacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
-                                                                                target:nil
-                                                                                action:nil];
-        toolbar.items = [NSArray arrayWithObjects:spacer, doneItem, nil];
-        RARelease(spacer);
-        RARelease(doneItem);
-        self.inputAccessoryView = toolbar;
-        return RAAutorelease(toolbar);
-    }
-}
-
+/*
+ - (UIView *)inputAccessoryView
+ {
+ if ([super inputAccessoryView])
+ return [super inputAccessoryView];
+ else {
+ UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 36)];
+ toolbar.barStyle = UIBarStyleBlackTranslucent;
+ UIBarButtonItem *doneItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+ target:self
+ action:@selector(onDone:)];
+ UIBarButtonItem *spacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+ target:nil
+ action:nil];
+ toolbar.items = [NSArray arrayWithObjects:spacer, doneItem, nil];
+ RARelease(spacer);
+ RARelease(doneItem);
+ self.inputAccessoryView = toolbar;
+ return RAAutorelease(toolbar);
+ }
+ }
+ */
 - (void)onDone:(id)sender
 {
     [self resignFirstResponder];
@@ -85,6 +74,10 @@
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(positionMainView:)
                                                  name:UIKeyboardWillShowNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(restoreMainView:)
+                                                 name:UIKeyboardWillHideNotification
                                                object:nil];
 }
 
@@ -104,8 +97,9 @@
 {
     CGRect frame = [self.window convertRect:self.frame
                                    fromView:self.superview];
+
     CGAffineTransform transform = CGAffineTransformIdentity;
-    
+
     switch ([UIApplication sharedApplication].statusBarOrientation) {
         case UIInterfaceOrientationPortrait:
             if (CGRectGetMaxY(frame) > keyboardFrame.origin.y - [self adjustDistance]) {
@@ -130,25 +124,49 @@
         default:
             break;
     }
-    [UIView beginAnimations:@"Adjust" context:nil];
-    [UIView setAnimationBeginsFromCurrentState:YES];
-    [UIView setAnimationDuration:duration];
-    [UIView setAnimationCurve:curve];
-    
-    self.window.transform = transform;
-    
-    [UIView commitAnimations];
+
+    [UIView animateKeyframesWithDuration:duration
+                                   delay:0.f
+                                 options:UIViewAnimationOptionBeginFromCurrentState | (curve << 16)
+                              animations:^{
+
+                                  self.window.transform = transform;
+                              }
+                              completion:^(BOOL finished) {
+
+                              }];
+}
+
+- (void)restoreMainView:(NSNotification *)notification
+{
+    if (!self.isFirstResponder)
+        return;
+
+    NSDictionary *userinfo = notification.userInfo;
+
+    NSInteger curve = [userinfo[UIKeyboardAnimationCurveUserInfoKey] integerValue];
+
+    CGFloat duration = [[userinfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
+
+    [UIView animateKeyframesWithDuration:duration
+                                   delay:0
+                                 options:UIViewAnimationOptionBeginFromCurrentState | (curve << 16)
+                              animations:^{
+                                  self.window.transform = CGAffineTransformIdentity;
+                              }
+                              completion:NULL];
+
 }
 
 - (void)positionMainView:(NSNotification *)notification
 {
     if (!self.isFirstResponder)
         return;
-    
+
     NSDictionary *userinfo = notification.userInfo;
 
     NSInteger curve = [userinfo[UIKeyboardAnimationCurveUserInfoKey] integerValue];
-    
+
     CGFloat duration = [[userinfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
     CGRect keyboardFrame = [[userinfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
     [self adjustPositionWithKeyboardFrame:keyboardFrame
